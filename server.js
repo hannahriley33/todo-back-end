@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.static('public')); 
 app.use(express.json()); 
 
+
 // auth routes
 const ensureAuth = require('./lib/auth/ensure-auth');
 const createAuthRoutes = require('././lib/auth/create-auth-routes');
@@ -39,23 +40,21 @@ const authRoutes = createAuthRoutes({
 });
 
 // app set up 
-const app = express();
-const PORT = process.env.PORT;
-app.use(morgan('dev'));
-app.use(cors());
-app.use(express.static('public'));
-app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+
 
 // for every route, on every request make sure there is a token
-const ensureAuth = require('./lib/auth/ensure-auth');
 
 app.use('/api', ensureAuth);
 
 //todos 
 //get request that returns whole list of my todos
 
+app.get('/api/test', (req, res) => {
+    res.json ({
+        message: `the user's id is ${req.userId}`
+    });
+});
 
 app.get('/api/todos' , async (req, res) => {
     
