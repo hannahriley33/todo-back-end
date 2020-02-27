@@ -45,7 +45,7 @@ const authRoutes = createAuthRoutes({
 
 // for every route, on every request make sure there is a token
 
-app.use('/api', ensureAuth);
+app.use('/api/', ensureAuth);
 
 //todos 
 //get request that returns whole list of my todos
