@@ -39,13 +39,10 @@ const authRoutes = createAuthRoutes({
     }
 });
 
-// app set up 
-
-
-
 // for every route, on every request make sure there is a token
 app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
+app.use(express.urlencoded({ extended: true }));
 
 //todos 
 //get request that returns whole list of my todos
