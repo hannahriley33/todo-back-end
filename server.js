@@ -44,7 +44,7 @@ const authRoutes = createAuthRoutes({
 
 
 // for every route, on every request make sure there is a token
-
+app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 //todos 
