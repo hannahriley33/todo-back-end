@@ -14,8 +14,6 @@ app.use(cors());
 app.use(express.static('public')); 
 app.use(express.json()); 
 
-app.use('/api/auth', authRoutes);
-app.use('/api', ensureAuth);
 app.use(express.urlencoded({ extended: true }));
 
 // auth routes
@@ -43,6 +41,8 @@ const authRoutes = createAuthRoutes({
 });
 
 // for every route, on every request make sure there is a token
+app.use('/api/auth', authRoutes);
+app.use('/api', ensureAuth);
 
 //todos 
 //get request that returns whole list of my todos
