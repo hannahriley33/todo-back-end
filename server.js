@@ -32,7 +32,7 @@ const authRoutes = createAuthRoutes({
     insertUser(user, hash) {
         return client.query(`
         INSERT into users (email, hash)
-        VALUES ($1, $2, $3)
+        VALUES ($1, $2)
         RETURNING id, email;
         `,
         [user.email, hash]
